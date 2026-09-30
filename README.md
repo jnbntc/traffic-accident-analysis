@@ -6,19 +6,58 @@
   <img src="https://img.shields.io/badge/ML-Classification-333333?style=flat-square" alt="Machine Learning Classification" />
 </p>
 
-Proyecto de análisis exploratorio y modelado predictivo sobre datos de accidentes de tránsito.
+Proyecto de análisis exploratorio y modelado predictivo sobre accidentes de tránsito del **Condado de Montgomery, Maryland**.
 
 El objetivo principal es estudiar la variable **`Injury Severity`** y comparar distintos modelos de clasificación para predecir la severidad de las lesiones a partir de características del accidente, del entorno, del vehículo y del conductor.
 
 > **Hallazgo principal:** aunque los modelos evaluados superaron el 80% de accuracy global, el fuerte desbalance de clases redujo de forma importante precision, recall y F1 en las categorías minoritarias más relevantes, como `FATAL INJURY` y `SUSPECTED SERIOUS INJURY`.
 
-## Contenido del repositorio
+## Estructura
 
-| Archivo | Propósito |
+| Ruta | Propósito |
 | --- | --- |
-| `dataset_description.ipynb` | Exploración y descripción de las variables del dataset |
-| `accident_severity_analysis.ipynb` | Preprocesamiento, análisis exploratorio, entrenamiento y evaluación de modelos |
-| `crash_data.csv` | Dataset utilizado por los notebooks |
+| `notebooks/dataset_description.ipynb` | Exploración y descripción de las variables |
+| `notebooks/accident_severity_analysis.ipynb` | Preprocesamiento, entrenamiento y evaluación de modelos |
+| `data/README.md` | Fuente del dataset e instrucciones para datos locales |
+| `requirements.txt` | Dependencias Python utilizadas por los notebooks |
+| `.gitignore` | Excluye checkpoints, entornos locales y datasets pesados |
+
+El CSV de trabajo ya no se versiona en el árbol actual del repositorio.
+
+## Quick start
+
+```bash
+git clone https://github.com/jnbntc/traffic-accident-analysis.git
+cd traffic-accident-analysis
+
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+Descargar el dataset y guardarlo como:
+
+```text
+data/crash_data.csv
+```
+
+Luego iniciar Jupyter:
+
+```bash
+jupyter lab
+```
+
+## Dataset
+
+El análisis se basa en **Crash Reporting - Drivers Data**, publicado en el portal de datos abiertos del Condado de Montgomery:
+
+https://data.montgomerycountymd.gov/Public-Safety/Crash-Reporting-Drivers-Data/mmzv-x632
+
+El portal evoluciona con el tiempo. Por eso, un dataset descargado hoy puede no reproducir exactamente los resultados históricos guardados en los notebooks.
+
+El snapshot original utilizado por este proyecto estaba versionado como `crash_data.csv`. Fue retirado del árbol actual por su tamaño, pero permanece disponible en el historial de Git del repositorio.
+
+Más detalles en [`data/README.md`](data/README.md).
 
 ## Objetivo de modelado
 
@@ -103,7 +142,7 @@ La conclusión principal del ejercicio es que el **desbalance de clases condicio
 ## Esquema del dataset
 
 <details>
-<summary>Ver columnas utilizadas/descriptas en el dataset</summary>
+<summary>Ver columnas descriptas en el dataset</summary>
 
 | Columna | Descripción | Tipo |
 | --- | --- | --- |
